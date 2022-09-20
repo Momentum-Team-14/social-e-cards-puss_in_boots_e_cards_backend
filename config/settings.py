@@ -11,19 +11,27 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import django_on_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# For django-environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
+environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-uv_an(o^jolihgs+c!tr9w3wb&n0##z@9o3&d#usb6&722^@c_'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -136,5 +144,5 @@ AUTH_USER_MODEL = 'ecard.CustomUser'
 SIMPLE_BACKEND_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
-# django_on_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
+django_on_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
