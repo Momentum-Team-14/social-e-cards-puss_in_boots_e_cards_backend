@@ -47,12 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ecard',
     'rest_framework',
-
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -148,3 +149,6 @@ LOGIN_REDIRECT_URL = '/'
 
 django_on_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
+
+
+CORS_ALLOW_ALL_ORIGINS: True
