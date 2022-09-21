@@ -37,7 +37,7 @@
                 "sha256:acb21fac9275f9972d81c7caf5761a89ec3ea25fe74545dd26b8a48cb3a0203e"
             ],
             "index": "pypi",
-            "version": "==4.1.1"
+            "version": "==4.0.0"
         },
         "django-cors-headers": {
             "hashes": [
