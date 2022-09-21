@@ -7,3 +7,9 @@ class CardSerializer(serializers.ModelSerializer):
         model = Card
         fields = ('owner', 'title', 'outer_message', 'inner_message','style', )
 
+
+class CommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = ('owner', 'card', 'text')
