@@ -5,11 +5,11 @@ class CardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Card
-        fields = ('owner', 'title', 'outer_message', 'inner_message','style', )
+        fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message','style')
 
 
 class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('owner', 'card', 'text')
+        fields = ('pk', 'owner', 'card', 'text')
