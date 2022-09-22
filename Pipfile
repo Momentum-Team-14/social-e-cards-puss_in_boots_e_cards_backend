@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 django = "==4.0.0"
 psycopg2-binary = "*"
-django-on-heroku = "4.0.0"
+django-on-heroku = "*"
 gunicorn = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
