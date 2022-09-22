@@ -137,7 +137,7 @@ INTERNAL_IPS = [
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  
-STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
