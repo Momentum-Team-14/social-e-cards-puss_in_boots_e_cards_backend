@@ -7,6 +7,9 @@ class CardList(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class CardDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Card.objects.all()
@@ -16,6 +19,9 @@ class CardDetail(generics.RetrieveUpdateDestroyAPIView):
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -28,7 +34,7 @@ class UserCardList(generics.ListCreateAPIView):
     serializer_class = CardSerializer
 
     def get_queryset(self):
-        queryset = Card.objects.filter(owner=self.request.user)
+        queryset = Card.objects.filter(owner=self.request.user.pk)
         return queryset
 
 
@@ -37,5 +43,5 @@ class UserCommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
 
     def get_queryset(self):
-        queryset = Comment.objects.filter(owner=self.request.owner)
+        queryset = Comment.objects.filter(owner=self.request.owner.pk)
         return queryset
