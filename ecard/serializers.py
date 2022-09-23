@@ -1,25 +1,21 @@
 from rest_framework import serializers
-from .models import Card, Style, Comment, Follow
+from .models import Card, CustomUser, Style, Comment, Follow
 
-class CardSerializer(serializers.ModelSerializer):
-    owner = serializers.SerializerMethodField()
+class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Card
-        fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message','style')
-
-    def get_owner(self, obj):
-        name = obj.owner.username
-        pk = obj.owner.pk
-        return pk, name
+        model = CustomUser
+        fields = ('pk', 'username')
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    owner = serializers.SerializerMethodField()
+    owner = CustomUserSerializer()
     class Meta:
         model = Comment
         fields = ('pk', 'owner', 'card', 'text')
 
-    def get_owner(self, obj):
-        name = obj.owner.username
-        pk = obj.owner.pk
-        return pk, name
+
+class CardSerializer(serializers.ModelSerializer):
+    owner = CustomUserSerializer()
+    class Meta:
+        model = Card
+        fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message', 'style')

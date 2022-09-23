@@ -45,3 +45,5 @@ class UserCommentList(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = Comment.objects.filter(owner=self.request.owner.pk)
         return queryset
+
+
