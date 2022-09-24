@@ -8,7 +8,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    owner = CustomUserSerializer()
+    owner = CustomUserSerializer(read_only=True)
     class Meta:
         model = Comment
         fields = ('pk', 'owner', 'card', 'text')
