@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'ecard',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
+    'ecard',
 ]
 
 MIDDLEWARE = [
@@ -158,4 +160,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }

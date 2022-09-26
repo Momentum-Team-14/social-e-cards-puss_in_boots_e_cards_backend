@@ -2,6 +2,7 @@ from dataclasses import fields
 from rest_framework import serializers
 from .models import Card, CustomUser, Style, Comment, Follow
 
+
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
