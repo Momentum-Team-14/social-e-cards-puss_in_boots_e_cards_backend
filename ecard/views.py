@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Card, Comment
-from .serializers import CardSerializer, CommentSerializer
+from .models import Card, Comment, Style
+from .serializers import CardSerializer, CommentSerializer, StyleSerialzier
 from django.shortcuts import render
 
 class CardList(generics.ListCreateAPIView):
@@ -47,3 +47,6 @@ class UserCommentList(generics.ListCreateAPIView):
         return queryset
 
 
+class StyleCreate(generics.CreateAPIView):
+    queryset = Style.objects.all()
+    serializer_class = StyleSerialzier
