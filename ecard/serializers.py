@@ -8,14 +8,15 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    owner = CustomUserSerializer()
+    owner = CustomUserSerializer(read_only=True)
     class Meta:
         model = Comment
         fields = ('pk', 'owner', 'card', 'text')
 
 
 class CardSerializer(serializers.ModelSerializer):
-    owner = CustomUserSerializer()
+    owner = CustomUserSerializer(read_only=True)
+    comments = CommentSerializer(many=True, read_only=True)
     class Meta:
         model = Card
-        fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message', 'style')
+        fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message', 'style', 'comments')
