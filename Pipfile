@@ -11,6 +11,7 @@ gunicorn = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 django-environ = "*"
+djoser = "*"
 
 [dev-packages]
 

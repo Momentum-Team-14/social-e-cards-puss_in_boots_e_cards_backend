@@ -1,14 +1,18 @@
 from rest_framework import generics
-from .models import Card, Comment
+from .models import Card, Comment, Style
 from .serializers import CardSerializer, CommentSerializer
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
+
 
 class CardList(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        random_style = Style(style="random")
+        random_style.save()
+        serializer.save(owner=self.request.user, style=random_style)
 
 
 class CardDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -32,6 +36,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
 class UserCardList(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = Card.objects.filter(owner=self.request.user.pk)

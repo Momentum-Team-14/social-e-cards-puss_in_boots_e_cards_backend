@@ -15,7 +15,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CardSerializer(serializers.ModelSerializer):
-    owner = CustomUserSerializer()
+    owner = CustomUserSerializer(read_only=True)
+
     class Meta:
         model = Card
-        fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message', 'style')
+        fields = ("pk", "owner", "title", "outer_message", "inner_message")
