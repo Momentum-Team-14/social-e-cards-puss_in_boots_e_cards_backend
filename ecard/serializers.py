@@ -32,6 +32,8 @@ class CardSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
+    follower = CustomUserSerializer(read_only=True)
+    followee = CustomUserSerializer(read_only=True)
     class Meta:
         model = Follow
         fields = ('pk', 'follower', 'followee')
