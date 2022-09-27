@@ -2,6 +2,8 @@ from rest_framework import generics
 from .models import Card, Comment, Style
 from .serializers import CardSerializer, CommentSerializer, StyleSerialzier
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
+
 
 class CardList(generics.ListCreateAPIView):
     queryset = Card.objects.all()
@@ -30,6 +32,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class UserCardList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
@@ -39,6 +42,7 @@ class UserCardList(generics.ListCreateAPIView):
 
 
 class UserCommentList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
@@ -48,5 +52,6 @@ class UserCommentList(generics.ListCreateAPIView):
 
 
 class StyleCreate(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Style.objects.all()
     serializer_class = StyleSerialzier
