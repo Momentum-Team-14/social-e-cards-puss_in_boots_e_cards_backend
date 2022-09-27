@@ -3,6 +3,16 @@ from .models import Card, Comment, Style
 from .serializers import CardSerializer, CommentSerializer, StyleSerialzier
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'ecard_list': reverse('ecard_list', request=request, format=format),
+    })
 
 
 class CardList(generics.ListCreateAPIView):
