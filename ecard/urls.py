@@ -10,6 +10,8 @@ urlpatterns = [
     path('comments/<int:pk>/', views.CommentDetail.as_view()),
     path('comments/user/', views.CommentDetail.as_view()),
     path('styles/', views.StyleCreate.as_view()),
+    path('following/', views.FollowList.as_view()),
+    path('following/delete/<int:pk>/', views.RemoveFollow.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

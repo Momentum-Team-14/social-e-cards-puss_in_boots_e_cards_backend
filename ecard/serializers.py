@@ -29,3 +29,10 @@ class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message', 'style', 'comments')
+
+
+class FollowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Follow
+        fields = ('pk', 'follower', 'followee')
+        
