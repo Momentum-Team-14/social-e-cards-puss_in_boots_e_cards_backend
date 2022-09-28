@@ -14,6 +14,7 @@ Root URL: https://powerful-island-75819.herokuapp.com
 | `GET` | /comments/<pk> |  Detail for one comment|
 | `GET` | /ecard/user/ |  List all of  current users cards|
 | `GET` | /comments/user/|  List all of current users comments|
+| `GET` | /following/|  List all of users followed|
 | `POST` | /ecard/ | Add a new ecard |
 | `POST` | /comments/ | Add a new comment |
 | `POST` | /styles/ | Add a new style for a card |
@@ -22,11 +23,12 @@ Root URL: https://powerful-island-75819.herokuapp.com
 | `POST` | /auth/users/ | Create a new user |
 | `POST` | /auth/token/login/ | User login |
 | `POST` | /auth/token/logout/ | User logout |
+| `POST` | /following/ | Follow another user|
 | `PATCH` | /ecard/<pk>/ | Update an existing ecard |
 | `PATCH` | /comments/<pk>/ | Update an existing comment |
 | `DELETE` | /ecard/<pk>/ | Delete a card  |
 | `DELETE` | /comments/<pk>/ | Delete a comment  |
-|
+| `DELETE` | /following/<pk>/ | Remove a user from users follow list|
 
 
 

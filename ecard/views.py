@@ -80,10 +80,9 @@ class FollowList(generics.ListCreateAPIView):
         serializer.save(follower=self.request.user)
 
 
-class RemoveFollow(generics.DestroyAPIView):
-    permission_classes = [IsAuthenticated]
+class FollowDetail(generics.RetrieveDestroyAPIView):
     queryset = Follow.objects.all()
-    serializer_class = FollowSerializer
+    serializer_class = FollowSerializer    
 
 
 class UserList(generics.ListCreateAPIView):
