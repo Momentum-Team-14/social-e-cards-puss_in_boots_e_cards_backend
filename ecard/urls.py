@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.api_root),
     path('ecard/', views.CardList.as_view(), name='ecard_list'),
     path('ecard/<int:pk>/', views.CardDetail.as_view(), name='ecard_detail'),
-    path('ecard/user/', views.UserCardList.as_view(), name='user_ecards'),
+    path('ecard/user/<int:pk>', views.UserCardList.as_view(), name='user_ecards'),
     path('comments/', views.CommentList.as_view(), name='comment_list'),
     path('comments/<int:pk>/', views.CommentDetail.as_view(), name='comment_detail'),
     path('comments/user/', views.CommentDetail.as_view(), name='user_comments'),

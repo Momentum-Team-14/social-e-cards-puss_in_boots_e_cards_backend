@@ -12,7 +12,7 @@ Root URL: https://powerful-island-75819.herokuapp.com
 | `GET` | /ecard/ | List of all cards |
 | `GET` | /ecard/int:pk/ |  Detail for one card|
 | `GET` | /comments/int:pk/ |  Detail for one comment|
-| `GET` | /ecard/user/ |  List all of  current users cards|
+| `GET` | /ecard/user/int:pk/ |  List all of  current users cards|
 | `GET` | /comments/user/|  List all of current users comments|
 | `GET` | /following/|  List all of users followed|
 | `POST` | /ecard/ | Add a new ecard |

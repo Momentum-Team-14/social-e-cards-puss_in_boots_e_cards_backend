@@ -47,7 +47,7 @@ class UserCardList(generics.ListCreateAPIView):
     serializer_class = CardSerializer
 
     def get_queryset(self):
-        queryset = Card.objects.filter(owner=self.request.user.pk)
+        queryset = Card.objects.filter(owner=self.request.user)
         return queryset
 
 
