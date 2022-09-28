@@ -167,3 +167,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ]
 }
+
+DJOSER = {
+    'USER_CREATE_PASSWORD_RETYPE': True,
+}
