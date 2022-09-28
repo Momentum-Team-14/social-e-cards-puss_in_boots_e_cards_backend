@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Card, Comment, Style
-from .serializers import CardSerializer, CommentSerializer, StyleSerialzier
+from .models import Card, Comment, CustomUser, Style, Follow
+from .serializers import CardSerializer, CommentSerializer, StyleSerialzier, FollowSerializer, CustomUserSerializer
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
@@ -65,3 +65,27 @@ class StyleCreate(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Style.objects.all()
     serializer_class = StyleSerialzier
+
+
+class FollowList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Follow.objects.all()
+    serializer_class = FollowSerializer
+
+    def get_queryset(self):
+        queryset = Follow.objects.filter(follower=self.request.user.pk)
+        return queryset
+
+    def perform_create(self, serializer):
+        serializer.save(follower=self.request.user)
+
+
+class RemoveFollow(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Follow.objects.all()
+    serializer_class = FollowSerializer
+
+
+class UserList(generics.ListCreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer

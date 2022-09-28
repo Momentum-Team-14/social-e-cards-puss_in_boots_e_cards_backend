@@ -1,7 +1,7 @@
 from dataclasses import fields
 from rest_framework import serializers
 from .models import Card, CustomUser, Style, Comment, Follow
-
+from django.db import IntegrityError
 
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,3 +29,11 @@ class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = ('pk', 'owner', 'title', 'outer_message', 'inner_message', 'style', 'comments')
+
+
+class FollowSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Follow
+        fields = ('pk', 'follower', 'followee')
+        
