@@ -10,8 +10,8 @@ Root URL: https://powerful-island-75819.herokuapp.com
 | Method | URL  | Description |
 | :-------- | :------- | :------------------------- |
 | `GET` | /ecard/ | List of all cards |
-| `GET` | /ecard/<pk>/ |  Detail for one card|
-| `GET` | /comments/<pk> |  Detail for one comment|
+| `GET` | /ecard/int:pk/ |  Detail for one card|
+| `GET` | /comments/int:pk/ |  Detail for one comment|
 | `GET` | /ecard/user/ |  List all of  current users cards|
 | `GET` | /comments/user/|  List all of current users comments|
 | `GET` | /following/|  List all of users followed|
@@ -24,11 +24,11 @@ Root URL: https://powerful-island-75819.herokuapp.com
 | `POST` | /auth/token/login/ | User login |
 | `POST` | /auth/token/logout/ | User logout |
 | `POST` | /following/ | Follow another user|
-| `PATCH` | /ecard/<pk>/ | Update an existing ecard |
-| `PATCH` | /comments/<pk>/ | Update an existing comment |
-| `DELETE` | /ecard/<pk>/ | Delete a card  |
-| `DELETE` | /comments/<pk>/ | Delete a comment  |
-| `DELETE` | /following/<pk>/ | Remove a user from users follow list|
+| `PATCH` | /ecard/int:pk/ | Update an existing ecard |
+| `PATCH` | /comments/int:pk/ | Update an existing comment |
+| `DELETE` | /ecard/int:pk/ | Delete a card  |
+| `DELETE` | /comments/int:pk/ | Delete a comment  |
+| `DELETE` | /following/int:pk/ | Remove a user from users follow list|
 
 
 
