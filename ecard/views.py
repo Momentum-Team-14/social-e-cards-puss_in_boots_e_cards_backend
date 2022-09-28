@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import Card, Comment, CustomUser, Style, Follow
-from .serializers import CardSerializer, CommentSerializer, StyleSerialzier, FollowSerializer, CustomUserSerializer
+from .serializers import CardSerializer, CommentSerializer, StyleSerializer, FollowSerializer, CustomUserSerializer, CardCreateSerializer
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
@@ -21,6 +21,11 @@ class CardList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CardCreateSerializer
+        return self.serializer_class
 
 
 class CardDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -64,7 +69,7 @@ class UserCommentList(generics.ListCreateAPIView):
 class StyleCreate(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Style.objects.all()
-    serializer_class = StyleSerialzier
+    serializer_class = StyleSerializer
 
 
 class FollowList(generics.ListCreateAPIView):
