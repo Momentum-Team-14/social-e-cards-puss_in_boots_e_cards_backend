@@ -94,6 +94,7 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.text} by:{self.owner} on {self.card}'
 
+
 class Follow(models.Model):
     follower = models.ForeignKey(CustomUser,on_delete=models.CASCADE,related_name = 'following')
     followee = models.ForeignKey(CustomUser,on_delete=models.CASCADE, related_name = 'followers')
