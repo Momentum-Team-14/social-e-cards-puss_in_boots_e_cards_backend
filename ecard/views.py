@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Card, Comment, Style, Follow
-from .serializers import CardSerializer, CommentSerializer, StyleSerialzier, FollowSerializer
+from .models import Card, Comment, CustomUser, Style, Follow
+from .serializers import CardSerializer, CommentSerializer, StyleSerialzier, FollowSerializer, CustomUserSerializer
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
@@ -84,3 +84,8 @@ class RemoveFollow(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
+
+
+class UserList(generics.ListCreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer

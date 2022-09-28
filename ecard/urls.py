@@ -13,6 +13,7 @@ urlpatterns = [
     path('styles/', views.StyleCreate.as_view()),
     path('following/', views.FollowList.as_view()),
     path('following/delete/<int:pk>/', views.RemoveFollow.as_view()),
+    path('users/', views.UserList.as_view, )
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
