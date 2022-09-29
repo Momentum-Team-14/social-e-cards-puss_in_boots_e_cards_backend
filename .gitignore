@@ -136,6 +136,7 @@ celerybeat.pid
 .venv
 venv/
 ENV/
+env/
 env.bak/
 venv.bak/
 powerful-island-75819
