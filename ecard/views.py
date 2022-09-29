@@ -2,7 +2,7 @@ from rest_framework import generics
 from .models import Card, Comment, CustomUser, Style, Follow
 from .serializers import CardSerializer, CommentSerializer, StyleSerializer, FollowSerializer, CustomUserSerializer, CardCreateSerializer
 from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -52,7 +52,7 @@ class UserCardList(generics.ListCreateAPIView):
     serializer_class = CardSerializer
 
     def get_queryset(self):
-        queryset = Card.objects.filter(owner=self.request.user)
+        queryset = Card.objects.filter(owner=self.request.user.pk)
         return queryset
 
 
@@ -86,10 +86,21 @@ class FollowList(generics.ListCreateAPIView):
 
 
 class FollowDetail(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Follow.objects.all()
-    serializer_class = FollowSerializer    
+    serializer_class = FollowSerializer  
+
+
+class FolloweeCardList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Card.objects.all()
+    serializer_class = CardSerializer
+
+    def get_queryset(self):
+        return Card.objects.filter(owner=self.kwargs['pk'])
 
 
 class UserList(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser]
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer

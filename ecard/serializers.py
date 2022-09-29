@@ -36,6 +36,7 @@ class CardSerializer(serializers.ModelSerializer):
 
 
 class CardCreateSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Card
         fields = ('title', 'outer_message', 'inner_message', 'style')
