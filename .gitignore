@@ -15,6 +15,7 @@ media
 # in your Git repository. Update and uncomment the following line accordingly.
 staticfiles/
 
+
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
@@ -133,11 +134,12 @@ celerybeat.pid
 
 # Environments
 .venv
-env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+powerful-island-75819
+
 
 # Spyder project settings
 .spyderproject
