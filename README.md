@@ -20,8 +20,6 @@ Root URL: https://powerful-island-75819.herokuapp.com
 | `POST` | /comments/ | Add a new comment |
 | `POST` | /styles/ | Add a new style for a card |
 | `POST` | /auth/users/ | Create a new user |
-| `POST` | /styles/ | Add a new style for a card |
-| `POST` | /auth/users/ | Create a new user |
 | `POST` | /auth/token/login/ | User login |
 | `POST` | /auth/token/logout/ | User logout |
 | `POST` | /following/ | Follow another user|
@@ -48,6 +46,8 @@ Once this repo has been cloned, use pipenv to install all of the necessary depen
 pipenv install 
 ```
 
+## Live Site URL
 
+https://social-ecards-pib14.netlify.app/cards
 
 
